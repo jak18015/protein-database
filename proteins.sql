@@ -20,9 +20,11 @@ SELECT DISTINCT domains FROM proteins;
 -- Order by CRISPR score
 SELECT * FROM proteins ORDER BY crispr_score DESC;
 
--- Filter for GRA proteins with low CRISPR score
+-- Filter for GRA proteins with low CRISPR score, sorted by name
 SELECT * FROM proteins 
-WHERE name LIKE '%GRA%' AND crispr_score < 1;
+WHERE name LIKE '%GRA%' AND crispr_score <= 2
+ORDER BY name;
+
 
 
 -- =====================================
