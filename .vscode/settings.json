@@ -1,0 +1,11 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "proteins_db",
+            "database": "proteins.db"
+        }
+    ],
+    "sqltools.useNodeRuntime": true
+}
