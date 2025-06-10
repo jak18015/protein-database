@@ -6,7 +6,7 @@
 SELECT * FROM proteins;
 
 -- Find by accession
-SELECT * FROM proteins WHERE accession = 'TGME49_208830';
+SELECT * FROM proteins WHERE accession = 'TGME49_222170';
 
 -- Filter by protein name
 SELECT * FROM proteins WHERE name LIKE '%GRA%';
@@ -25,8 +25,6 @@ SELECT * FROM proteins
 WHERE name LIKE '%GRA%' AND crispr_score <= 2
 ORDER BY name;
 
-
-
 -- =====================================
 -- inserts.sql — Add data
 -- =====================================
@@ -35,18 +33,32 @@ ORDER BY name;
 INSERT INTO proteins (
   name, accession, function, domains, crispr_score, reference
 ) VALUES (
-  'New Protein', 
-  'P67890', 
-  'Some function', 
-  'domainA,domainB', 
-  0.0, 
+  'GRA17', 
+  'TGME49_222170', 
+  'Regulates bradyzoite viability', 
+  'NULL', 
+  NULL, 
   'PMID:12345678'
 );
+
+
+-- Add to existing protein entry
+UPDATE proteins
+SET 
+  function = COALESCE(function, '') || '; ' || 'Regulates bradyzoite viability',
+  reference = COALESCE(reference, '') || '; ' || '(Paredes-Santos et al., 2019)'
+WHERE accession = 'TGME49_222170';
 
 
 -- =====================================
 -- updates.sql — Modify data
 -- =====================================
+
+-- Trim whitespace from accession
+UPDATE proteins
+SET accession = TRIM(accession);
+
+
 
 -- Update function by accession
 UPDATE proteins
