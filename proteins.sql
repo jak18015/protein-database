@@ -9,7 +9,7 @@ SELECT * FROM proteins;
 SELECT * FROM proteins WHERE accession = 'P12345';
 
 -- Filter by protein name
-SELECT * FROM proteins WHERE name LIKE '%myosin%';
+SELECT * FROM proteins WHERE name LIKE '%GRA%';
 
 -- Filter by function keyword
 SELECT * FROM proteins WHERE function LIKE '%kinase%';
@@ -50,9 +50,10 @@ INSERT INTO proteins (
 
 -- Update function by accession
 UPDATE proteins
-SET function = 'Updated function here'
-WHERE accession = 'P67890';
+SET accession = 'TGME49_208830'
+WHERE accession = '208830';
 
+SELECT * FROM proteins;
 -- Update CRISPR score
 UPDATE proteins
 SET crispr_score = 98.0
