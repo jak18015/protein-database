@@ -6,25 +6,23 @@
 SELECT * FROM proteins;
 
 -- Find by accession
-SELECT * FROM proteins WHERE accession = 'P12345';
+SELECT * FROM proteins WHERE accession = 'TGME49_208830';
 
 -- Filter by protein name
 SELECT * FROM proteins WHERE name LIKE '%GRA%';
 
 -- Filter by function keyword
-SELECT * FROM proteins WHERE function LIKE '%kinase%';
-
--- Filter by CRISPR score threshold
-SELECT * FROM proteins WHERE crispr_score < 1;
+SELECT * FROM proteins WHERE function LIKE '%phosphatase%';
 
 -- Distinct conserved domains
 SELECT DISTINCT domains FROM proteins;
 
--- Find by reference ID
-SELECT * FROM proteins WHERE reference LIKE '%PMID%';
-
 -- Order by CRISPR score
 SELECT * FROM proteins ORDER BY crispr_score DESC;
+
+-- Filter for GRA proteins with low CRISPR score
+SELECT * FROM proteins 
+WHERE name LIKE '%GRA%' AND crispr_score < 1;
 
 
 -- =====================================
